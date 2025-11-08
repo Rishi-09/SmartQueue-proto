@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account - SmartQueue</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+  <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fsmartqueue2799back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.9"></script>
+  <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
+  </head>
+<body class="bg-background">
+    <!-- Navigation Header -->
+    <header class="bg-white shadow-subtle sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4" y="4" width="24" height="24" rx="4" fill="currentColor"/>
+                            <path d="M12 10h8v2h-8v-2zm0 4h8v2h-8v-2zm0 4h6v2h-6v-2z" fill="white"/>
+                            <circle cx="9" cy="11" r="1" fill="white"/>
+                            <circle cx="9" cy="15" r="1" fill="white"/>
+                            <circle cx="9" cy="19" r="1" fill="white"/>
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <h1 class="text-xl font-bold text-primary">SmartQueue</h1>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="homepage.html" class="text-secondary-600 hover:text-primary px-3 py-2 rounded-md text-sm transition-colors">Home</a>
+                        <a href="institution_directory.html" class="text-secondary-600 hover:text-primary px-3 py-2 rounded-md text-sm transition-colors">Directory</a>
+                        <a href="queue_dashboard.html" class="text-secondary-600 hover:text-primary px-3 py-2 rounded-md text-sm transition-colors">Dashboard</a>
+                        <a href="institution_admin_panel.html" class="text-secondary-600 hover:text-primary px-3 py-2 rounded-md text-sm transition-colors">Admin</a>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="user_registration.html" class="btn-secondary text-sm">Sign Up</a>
+                    <a href="user_registration.html" class="btn-primary text-sm">Get Started</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-secondary-600 hover:text-primary p-2" onclick="toggleMobileMenu()">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-secondary-200">
+                    <a href="homepage.html" class="text-secondary-600 hover:text-primary block px-3 py-2 rounded-md text-base">Home</a>
+                    <a href="institution_directory.html" class="text-secondary-600 hover:text-primary block px-3 py-2 rounded-md text-base">Directory</a>
+                    <a href="queue_dashboard.html" class="text-secondary-600 hover:text-primary block px-3 py-2 rounded-md text-base">Dashboard</a>
+                    <a href="institution_admin_panel.html" class="text-secondary-600 hover:text-primary block px-3 py-2 rounded-md text-base">Admin</a>
+                    <div class="pt-4 pb-3 border-t border-secondary-200">
+                        <div class="flex flex-col space-y-3 px-3">
+                            <a href="user_registration.html" class="btn-secondary text-center">Sign Up</a>
+                            <a href="user_registration.html" class="btn-primary text-center">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Registration Section -->
+    <section class="min-h-screen bg-gradient-to-br from-primary-50 to-accent-50 py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-3xl lg:text-4xl font-bold text-text-primary mb-4">Create Your SmartQueue Account</h1>
+                <p class="text-xl text-text-secondary">Join thousands of users who have transformed their waiting experience</p>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="mb-8">
+                <div class="flex items-center justify-center space-x-4">
+                    <div class="flex items-center">
+                        <div id="step-1-indicator" class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-semibold">1</div>
+                        <span id="step-1-label" class="ml-2 text-sm font-medium text-primary">Personal Info</span>
+                    </div>
+                    <div class="w-12 h-0.5 bg-secondary-200">
+                        <div id="progress-bar-1" class="h-full bg-primary transition-all duration-300 w-0"></div>
+                    </div>
+                    <div class="flex items-center">
+                        <div id="step-2-indicator" class="w-8 h-8 rounded-full bg-secondary-200 text-secondary-600 flex items-center justify-center text-sm font-semibold">2</div>
+                        <span id="step-2-label" class="ml-2 text-sm font-medium text-secondary-600">Verification</span>
+                    </div>
+                    <div class="w-12 h-0.5 bg-secondary-200">
+                        <div id="progress-bar-2" class="h-full bg-primary transition-all duration-300 w-0"></div>
+                    </div>
+                    <div class="flex items-center">
+                        <div id="step-3-indicator" class="w-8 h-8 rounded-full bg-secondary-200 text-secondary-600 flex items-center justify-center text-sm font-semibold">3</div>
+                        <span id="step-3-label" class="ml-2 text-sm font-medium text-secondary-600">Complete</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="bg-white rounded-2xl shadow-queue-data p-8">
+                <form id="registration-form" novalidate>
+                    <!-- Step 1: Personal Information -->
+                    <div id="step-1" class="step-content">
+                        <div class="mb-6">
+                            <h2 class="text-2xl font-semibold text-text-primary mb-2">Personal Information</h2>
+                            <p class="text-text-secondary">Let's start with your basic details</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Full Name -->
+                            <div>
+                                <label for="fullName" class="block text-sm font-medium text-text-primary mb-2">
+                                    Full Name <span class="text-error">*</span>
+                                </label>
+                                <input type="text" id="fullName" name="fullName" required class="input-field" placeholder="Enter your full name" aria-describedby="fullName-error" />
+                                <div id="fullName-error" class="text-error text-sm mt-1 hidden" role="alert"></div>
+                            </div>
+
+                            <!-- Mobile Number -->
+                            <div>
+                                <label for="mobile" class="block text-sm font-medium text-text-primary mb-2">
+                                    Mobile Number <span class="text-error">*</span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-text-secondary">+91</span>
+                                    <input type="tel" id="mobile" name="mobile" required class="input-field pl-12" placeholder="9876543210" pattern="[0-9]{10}" maxlength="10" aria-describedby="mobile-error" />
+                                </div>
+                                <div id="mobile-error" class="text-error text-sm mt-1 hidden" role="alert"></div>
+                            </div>
+
+                            <!-- Email -->
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-text-primary mb-2">
+                                    Email Address <span class="text-error">*</span>
+                                </label>
+                                <input type="email" id="email" name="email" required class="input-field" placeholder="your.email@example.com" aria-describedby="email-error" />
+                                <div id="email-error" class="text-error text-sm mt-1 hidden" role="alert"></div>
+                            </div>
+
+                            <!-- Date of Birth -->
+                            <div>
+                                <label for="dateOfBirth" class="block text-sm font-medium text-text-primary mb-2">
+                                    Date of Birth <span class="text-error">*</span>
+                                </label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" required class="input-field" max="2006-10-07" aria-describedby="dateOfBirth-error" />
+                                <div id="dateOfBirth-error" class="text-error text-sm mt-1 hidden" role="alert"></div>
+                            </div>
+                        </div>
+
+                        <!-- Password Section -->
+                        <div class="mt-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <!-- Password -->
+                                <div>
+                                    <label for="password" class="block text-sm font-medium text-text-primary mb-2">
+                                        Password <span class="text-error">*</span>
+                                    </label>
+                                    <div class="relative">
+                                        <input type="password" id="password" name="password" required class="input-field pr-12" placeholder="Create a strong password" aria-describedby="password-error password-strength" />
+                                        <button type="button" onclick="togglePassword('password')" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-secondary-600 hover:text-primary">
+                                            <svg id="password-eye" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div id="password-error" class="text-error text-sm mt-1 hidden" role="alert"></div>
+                                    
+                                    <!-- Password Strength Indicator -->
+                                    <div id="password-strength" class="mt-2">
+                                        <div class="flex space-x-1 mb-2">
+                                            <div id="strength-bar-1" class="h-1 w-1/4 bg-secondary-200 rounded"></div>
+                                            <div id="strength-bar-2" class="h-1 w-1/4 bg-secondary-200 rounded"></div>
+                                            <div id="strength-bar-3" class="h-1 w-1/4 bg-secondary-200 rounded"></div>
+                                            <div id="strength-bar-4" class="h-1 w-1/4 bg-secondary-200 rounded"></div>
+                                        </div>
+                                        <p id="strength-text" class="text-xs text-secondary-600">Password strength: Weak</p>
+                                        <ul class="text-xs text-secondary-600 mt-1 space-y-1">
+                                            <li id="req-length" class="flex items-center">
+                                                <svg class="w-3 h-3 mr-1 text-secondary-400" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                                </svg>
+                                                At least 8 characters
+                                            </li>
+                                            <li id="req-uppercase" class="flex items-center">
+                                                <svg class="w-3 h-3 mr-1 text-secondary-400" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                                </svg>
+                                                One uppercase letter
+                                            </li>
+                                            <li id="req-number" class="flex items-center">
+                                                <svg class="w-3 h-3 mr-1 text-secondary-400" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                                </svg>
+                                                One number
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Confirm Password -->
+                                <div>
+                                    <label for="confirmPassword" class="block text-sm font-medium text-text-primary mb-2">
+                                        Confirm Password <span class="text-error">*</span>
+                                    </label>
+                                    <div class="relative">
+                                        <input type="password" id="confirmPassword" name="confirmPassword" required class="input-field pr-12" placeholder="Confirm your password" aria-describedby="confirmPassword-error" />
+                                        <button type="button" onclick="togglePassword('confirmPassword')" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-secondary-600 hover:text-primary">
+                                            <svg id="confirmPassword-eye" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div id="confirmPassword-error" class="text-error text-sm mt-1 hidden" role="alert"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Continue Button -->
+                        <div class="mt-8 flex justify-end">
+                            <button type="button" onclick="nextStep(1)" class="btn-primary">
+                                Continue to Verification
+                                <svg class="w-5 h-5 ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Aadhaar Verification -->
+                    <div id="step-2" class="step-content hidden">
+                        <div class="mb-6">
+                            <h2 class="text-2xl font-semibold text-text-primary mb-2">Aadhaar Verification</h2>
+                            <p class="text-text-secondary">Secure your account with government-verified identity</p>
+                        </div>
+
+                        <!-- Security Notice -->
+                        <div class="bg-primary-50 border border-primary-200 rounded-lg p-4 mb-6">
+                            <div class="flex items-start">
+                                <svg class="w-5 h-5 text-primary mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                </svg>
+                                <div>
+                                    <h3 class="font-semibold text-primary mb-1">Your Privacy is Protected</h3>
+                                    <p class="text-sm text-primary-700">We use bank-level encryption to protect your Aadhaar information. Your data is never shared with third parties.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <!-- Aadhaar Number -->
+                            <div>
+                                <label for="aadhaar" class="block text-sm font-medium text-text-primary mb-2">
+                                    Aadhaar Number <span class="text-error">*</span>
+                                </label>
+                                <input type="text" id="aadhaar" name="aadhaar" required class="input-field mono" placeholder="XXXX XXXX XXXX" pattern="[0-9]{4}\s[0-9]{4}\s[0-9]{4}" maxlength="14" aria-describedby="aadhaar-error aadhaar-help" />
+                                <div id="aadhaar-help" class="text-xs text-text-secondary mt-1">
+                                    Enter your 12-digit Aadhaar number (format: XXXX XXXX XXXX)
+                                </div>
+                                <div id="aadhaar-error" class="text-error text-sm mt-1 hidden" role="alert"></div>
+                            </div>
+
+                            <!-- OTP Verification -->
+                            <div id="otp-section" class="hidden">
+                                <label for="otp" class="block text-sm font-medium text-text-primary mb-2">
+                                    Enter OTP <span class="text-error">*</span>
+                                </label>
+                                <div class="flex space-x-2">
+                                    <input type="text" id="otp" name="otp" maxlength="6" class="input-field mono text-center" placeholder="XXXXXX" aria-describedby="otp-error otp-help" />
+                                    <button type="button" id="resend-otp" class="btn-secondary whitespace-nowrap" disabled>
+                                        Resend OTP (<span id="otp-timer">30</span>s)
+                                    </button>
+                                </div>
+                                <div id="otp-help" class="text-xs text-text-secondary mt-1">
+                                    OTP sent to your registered mobile number ending with ****<span id="masked-mobile"></span>
+                                </div>
+                                <div id="otp-error" class="text-error text-sm mt-1 hidden" role="alert"></div>
+                            </div>
+
+                            <!-- Send OTP Button -->
+                            <div id="send-otp-section">
+                                <button type="button" id="send-otp-btn" onclick="sendOTP()" class="btn-primary">
+                                    <svg class="w-5 h-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                                    </svg>
+                                    Send OTP for Verification
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Buttons -->
+                        <div class="mt-8 flex justify-between">
+                            <button type="button" onclick="prevStep(2)" class="btn-secondary">
+                                <svg class="w-5 h-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                                </svg>
+                                Back
+                            </button>
+                            <button type="button" id="verify-continue-btn" onclick="nextStep(2)" class="btn-primary" disabled>
+                                Verify & Continue
+                                <svg class="w-5 h-5 ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Complete Registration -->
+                    <div id="step-3" class="step-content hidden">
+                        <div class="mb-6">
+                            <h2 class="text-2xl font-semibold text-text-primary mb-2">Complete Your Registration</h2>
+                            <p class="text-text-secondary">Review your information and agree to our terms</p>
+                        </div>
+
+                        <!-- Profile Summary -->
+                        <div class="bg-surface rounded-lg p-6 mb-6">
+                            <h3 class="font-semibold text-text-primary mb-4">Profile Summary</h3>
+                            <div class="grid md:grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <span class="text-text-secondary">Full Name:</span>
+                                    <span id="summary-name" class="ml-2 font-medium text-text-primary"></span>
+                                </div>
+                                <div>
+                                    <span class="text-text-secondary">Mobile:</span>
+                                    <span id="summary-mobile" class="ml-2 font-medium text-text-primary"></span>
+                                </div>
+                                <div>
+                                    <span class="text-text-secondary">Email:</span>
+                                    <span id="summary-email" class="ml-2 font-medium text-text-primary"></span>
+                                </div>
+                                <div>
+                                    <span class="text-text-secondary">Aadhaar:</span>
+                                    <span id="summary-aadhaar" class="ml-2 font-medium text-text-primary">****-****-****</span>
+                                    <span class="ml-2 text-success text-xs">✓ Verified</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Privacy -->
+                        <div class="space-y-4">
+                            <!-- Terms of Service -->
+                            <div class="flex items-start">
+                                <input type="checkbox" id="terms" name="terms" required class="mt-1 h-4 w-4 text-primary border-secondary-300 rounded focus:ring-primary-500" />
+                                <label for="terms" class="ml-3 text-sm text-text-secondary">
+                                    I agree to the <a href="javascript:void(0)" class="text-primary hover:underline">Terms of Service</a> 
+                                    and <a href="javascript:void(0)" class="text-primary hover:underline">User Agreement</a>
+                                    <span class="text-error">*</span>
+                                </label>
+                            </div>
+
+                            <!-- Privacy Policy -->
+                            <div class="flex items-start">
+                                <input type="checkbox" id="privacy" name="privacy" required class="mt-1 h-4 w-4 text-primary border-secondary-300 rounded focus:ring-primary-500" />
+                                <label for="privacy" class="ml-3 text-sm text-text-secondary">
+                                    I acknowledge that I have read and understood the 
+                                    <a href="javascript:void(0)" class="text-primary hover:underline">Privacy Policy</a>
+                                    <span class="text-error">*</span>
+                                </label>
+                            </div>
+
+                            <!-- Marketing Communications -->
+                            <div class="flex items-start">
+                                <input type="checkbox" id="marketing" name="marketing" class="mt-1 h-4 w-4 text-primary border-secondary-300 rounded focus:ring-primary-500" />
+                                <label for="marketing" class="ml-3 text-sm text-text-secondary">
+                                    I would like to receive updates about new features, queue notifications, and promotional offers
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Buttons -->
+                        <div class="mt-8 flex justify-between">
+                            <button type="button" onclick="prevStep(3)" class="btn-secondary">
+                                <svg class="w-5 h-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                                </svg>
+                                Back
+                            </button>
+                            <button type="submit" id="create-account-btn" class="btn-primary">
+                                <svg class="w-5 h-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Create Account
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Already have account -->
+                <div class="mt-8 text-center border-t border-secondary-200 pt-6">
+                    <p class="text-text-secondary">
+                        Already have an account? 
+                        <a href="queue_dashboard.html" class="text-primary hover:underline font-semibold">Sign in here</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="mt-12 grid md:grid-cols-3 gap-6 text-center">
+                <div class="flex flex-col items-center">
+                    <div class="bg-success-100 w-12 h-12 rounded-full flex items-center justify-center mb-3">
+                        <svg class="w-6 h-6 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-text-primary mb-1">Aadhaar Verified</h3>
+                    <p class="text-sm text-text-secondary">Government-grade identity verification</p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="bg-primary-100 w-12 h-12 rounded-full flex items-center justify-center mb-3">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-text-primary mb-1">SSL Encrypted</h3>
+                    <p class="text-sm text-text-secondary">Bank-level data encryption</p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="bg-accent-100 w-12 h-12 rounded-full flex items-center justify-center mb-3">
+                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-text-primary mb-1">GDPR Compliant</h3>
+                    <p class="text-sm text-text-secondary">International privacy standards</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4" y="4" width="24" height="24" rx="4" fill="currentColor"/>
+                            <path d="M12 10h8v2h-8v-2zm0 4h8v2h-8v-2zm0 4h6v2h-6v-2z" fill="white"/>
+                            <circle cx="9" cy="11" r="1" fill="white"/>
+                            <circle cx="9" cy="15" r="1" fill="white"/>
+                            <circle cx="9" cy="19" r="1" fill="white"/>
+                        </svg>
+                        <h3 class="text-xl font-bold ml-3">SmartQueue</h3>
+                    </div>
+                    <p class="text-secondary-300 mb-6 max-w-md">
+                        Revolutionizing waiting experiences through intelligent queue management. Skip the line, not the service.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="javascript:void(0)" class="text-secondary-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="text-secondary-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="text-secondary-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="homepage.html" class="text-secondary-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="institution_directory.html" class="text-secondary-300 hover:text-white transition-colors">Directory</a></li>
+                        <li><a href="queue_dashboard.html" class="text-secondary-300 hover:text-white transition-colors">Dashboard</a></li>
+                        <li><a href="user_registration.html" class="text-secondary-300 hover:text-white transition-colors">Sign Up</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="javascript:void(0)" class="text-secondary-300 hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="text-secondary-300 hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="javascript:void(0)" class="text-secondary-300 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0)" class="text-secondary-300 hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-secondary-800 mt-12 pt-8 text-center">
+                <p class="text-secondary-400">© 2025 SmartQueue. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        let otpTimer = null;
+        let otpCountdown = 30;
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Password visibility toggle
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const eyeIcon = document.getElementById(fieldId + '-eye');
+            
+            if (field.type === 'password') {
+                field.type = 'text';
+                eyeIcon.innerHTML = `
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"/>
+                `;
+            } else {
+                field.type = 'password';
+                eyeIcon.innerHTML = `
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                `;
+            }
+        }
+
+        // Password strength checker
+        function checkPasswordStrength(password) {
+            let strength = 0;
+            const requirements = {
+                length: password.length >= 8,
+                uppercase: /[A-Z]/.test(password),
+                number: /[0-9]/.test(password)
+            };
+
+            // Update requirement indicators
+            Object.keys(requirements).forEach(req => {
+                const element = document.getElementById(`req-${req}`);
+                const icon = element.querySelector('svg');
+                if (requirements[req]) {
+                    strength++;
+                    icon.classList.remove('text-secondary-400');
+                    icon.classList.add('text-success');
+                    element.classList.add('text-success');
+                } else {
+                    icon.classList.remove('text-success');
+                    icon.classList.add('text-secondary-400');
+                    element.classList.remove('text-success');
+                }
+            });
+
+            // Update strength bars
+            const bars = ['strength-bar-1', 'strength-bar-2', 'strength-bar-3', 'strength-bar-4'];
+            const colors = ['bg-error', 'bg-warning-500', 'bg-accent', 'bg-success'];
+            const texts = ['Very Weak', 'Weak', 'Good', 'Strong'];
+
+            bars.forEach((bar, index) => {
+                const element = document.getElementById(bar);
+                element.className = 'h-1 w-1/4 rounded';
+                if (index < strength) {
+                    element.classList.add(colors[Math.min(strength - 1, 3)]);
+                } else {
+                    element.classList.add('bg-secondary-200');
+                }
+            });
+
+            document.getElementById('strength-text').textContent = `Password strength: ${texts[Math.min(strength, 3)]}`;
+            return strength >= 3;
+        }
+
+        // Form validation
+        function validateStep(step) {
+            let isValid = true;
+            const errors = {};
+
+            if (step === 1) {
+                // Personal information validation
+                const fullName = document.getElementById('fullName').value.trim();
+                const mobile = document.getElementById('mobile').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const dateOfBirth = document.getElementById('dateOfBirth').value;
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+
+                if (!fullName || fullName.length < 2) {
+                    errors.fullName = 'Please enter your full name (at least 2 characters)';
+                    isValid = false;
+                }
+
+                if (!mobile || !/^[0-9]{10}$/.test(mobile)) {
+                    errors.mobile = 'Please enter a valid 10-digit mobile number';
+                    isValid = false;
+                }
+
+                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    errors.email = 'Please enter a valid email address';
+                    isValid = false;
+                }
+
+                if (!dateOfBirth) {
+                    errors.dateOfBirth = 'Please select your date of birth';
+                    isValid = false;
+                } else {
+                    const birthDate = new Date(dateOfBirth);
+                    const today = new Date();
+                    const age = today.getFullYear() - birthDate.getFullYear();
+                    if (age < 18) {
+                        errors.dateOfBirth = 'You must be at least 18 years old to register';
+                        isValid = false;
+                    }
+                }
+
+                if (!password || !checkPasswordStrength(password)) {
+                    errors.password = 'Password must meet all requirements';
+                    isValid = false;
+                }
+
+                if (password !== confirmPassword) {
+                    errors.confirmPassword = 'Passwords do not match';
+                    isValid = false;
+                }
+            }
+
+            if (step === 2) {
+                // Aadhaar validation
+                const aadhaar = document.getElementById('aadhaar').value.trim();
+                const otp = document.getElementById('otp').value.trim();
+
+                if (!aadhaar || !/^[0-9]{4}\s[0-9]{4}\s[0-9]{4}$/.test(aadhaar)) {
+                    errors.aadhaar = 'Please enter a valid Aadhaar number in format XXXX XXXX XXXX';
+                    isValid = false;
+                }
+
+                if (document.getElementById('otp-section').classList.contains('hidden') === false) {
+                    if (!otp || !/^[0-9]{6}$/.test(otp)) {
+                        errors.otp = 'Please enter the 6-digit OTP';
+                        isValid = false;
+                    }
+                }
+            }
+
+            if (step === 3) {
+                // Terms validation
+                const terms = document.getElementById('terms').checked;
+                const privacy = document.getElementById('privacy').checked;
+
+                if (!terms || !privacy) {
+                    alert('Please accept the Terms of Service and Privacy Policy to continue');
+                    isValid = false;
+                }
+            }
+
+            // Display errors
+            Object.keys(errors).forEach(field => {
+                const errorElement = document.getElementById(field + '-error');
+                const inputElement = document.getElementById(field);
+                
+                if (errorElement) {
+                    errorElement.textContent = errors[field];
+                    errorElement.classList.remove('hidden');
+                }
+                
+                if (inputElement) {
+                    inputElement.classList.add('border-error');
+                }
+            });
+
+            // Clear previous errors for valid fields
+            const allFields = ['fullName', 'mobile', 'email', 'dateOfBirth', 'password', 'confirmPassword', 'aadhaar', 'otp'];
+            allFields.forEach(field => {
+                if (!errors[field]) {
+                    const errorElement = document.getElementById(field + '-error');
+                    const inputElement = document.getElementById(field);
+                    
+                    if (errorElement) {
+                        errorElement.classList.add('hidden');
+                    }
+                    
+                    if (inputElement) {
+                        inputElement.classList.remove('border-error');
+                    }
+                }
+            });
+
+            return isValid;
+        }
+
+        // Step navigation
+        function nextStep(step) {
+            if (!validateStep(step)) {
+                return;
+            }
+
+            if (step === 1) {
+                updateProgressIndicator(2);
+                document.getElementById('step-1').classList.add('hidden');
+                document.getElementById('step-2').classList.remove('hidden');
+                currentStep = 2;
+            } else if (step === 2) {
+                // Check if OTP is verified
+                if (!document.getElementById('verify-continue-btn').disabled) {
+                    updateSummary();
+                    updateProgressIndicator(3);
+                    document.getElementById('step-2').classList.add('hidden');
+                    document.getElementById('step-3').classList.remove('hidden');
+                    currentStep = 3;
+                }
+            }
+        }
+
+        function prevStep(step) {
+            if (step === 2) {
+                updateProgressIndicator(1);
+                document.getElementById('step-2').classList.add('hidden');
+                document.getElementById('step-1').classList.remove('hidden');
+                currentStep = 1;
+            } else if (step === 3) {
+                updateProgressIndicator(2);
+                document.getElementById('step-3').classList.add('hidden');
+                document.getElementById('step-2').classList.remove('hidden');
+                currentStep = 2;
+            }
+        }
+
+        // Progress indicator update
+        function updateProgressIndicator(step) {
+            // Reset all indicators
+            for (let i = 1; i <= 3; i++) {
+                const indicator = document.getElementById(`step-${i}-indicator`);
+                const label = document.getElementById(`step-${i}-label`);
+                
+                if (i < step) {
+                    // Completed step
+                    indicator.className = 'w-8 h-8 rounded-full bg-success text-white flex items-center justify-center text-sm font-semibold';
+                    indicator.innerHTML = '✓';
+                    label.className = 'ml-2 text-sm font-medium text-success';
+                } else if (i === step) {
+                    // Current step
+                    indicator.className = 'w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-semibold';
+                    indicator.textContent = i;
+                    label.className = 'ml-2 text-sm font-medium text-primary';
+                } else {
+                    // Future step
+                    indicator.className = 'w-8 h-8 rounded-full bg-secondary-200 text-secondary-600 flex items-center justify-center text-sm font-semibold';
+                    indicator.textContent = i;
+                    label.className = 'ml-2 text-sm font-medium text-secondary-600';
+                }
+            }
+
+            // Update progress bars
+            document.getElementById('progress-bar-1').style.width = step > 1 ? '100%' : '0%';
+            document.getElementById('progress-bar-2').style.width = step > 2 ? '100%' : '0%';
+        }
+
+        // OTP functionality
+        function sendOTP() {
+            const aadhaar = document.getElementById('aadhaar').value.trim();
+            const mobile = document.getElementById('mobile').value.trim();
+            
+            if (!validateStep(2)) {
+                return;
+            }
+
+            // Simulate OTP sending
+            document.getElementById('send-otp-section').classList.add('hidden');
+            document.getElementById('otp-section').classList.remove('hidden');
+            document.getElementById('masked-mobile').textContent = mobile.slice(-4);
+            
+            // Start OTP timer
+            startOTPTimer();
+            
+            // Show success message
+            setTimeout(() => {
+                alert('OTP sent successfully to your registered mobile number!');
+            }, 500);
+        }
+
+        function startOTPTimer() {
+            otpCountdown = 30;
+            const resendBtn = document.getElementById('resend-otp');
+            const timerSpan = document.getElementById('otp-timer');
+            
+            resendBtn.disabled = true;
+            
+            otpTimer = setInterval(() => {
+                otpCountdown--;
+                timerSpan.textContent = otpCountdown;
+                
+                if (otpCountdown <= 0) {
+                    clearInterval(otpTimer);
+                    resendBtn.disabled = false;
+                    resendBtn.innerHTML = 'Resend OTP';
+                }
+            }, 1000);
+        }
+
+        // Update summary
+        function updateSummary() {
+            document.getElementById('summary-name').textContent = document.getElementById('fullName').value;
+            document.getElementById('summary-mobile').textContent = '+91 ' + document.getElementById('mobile').value;
+            document.getElementById('summary-email').textContent = document.getElementById('email').value;
+        }
+
+        // Form submission
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!validateStep(3)) {
+                return;
+            }
+
+            // Simulate account creation
+            const submitBtn = document.getElementById('create-account-btn');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Creating Account...
+            `;
+
+            setTimeout(() => {
+                alert('Account created successfully! Welcome to SmartQueue!');
+                window.location.href = 'queue_dashboard.html';
+            }, 2000);
+        });
+
+        // Real-time validation
+        document.getElementById('password').addEventListener('input', function() {
+            checkPasswordStrength(this.value);
+        });
+
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = this.value;
+            const errorElement = document.getElementById('confirmPassword-error');
+            
+            if (confirmPassword && password !== confirmPassword) {
+                errorElement.textContent = 'Passwords do not match';
+                errorElement.classList.remove('hidden');
+                this.classList.add('border-error');
+            } else {
+                errorElement.classList.add('hidden');
+                this.classList.remove('border-error');
+            }
+        });
+
+        // Aadhaar formatting
+        document.getElementById('aadhaar').addEventListener('input', function() {
+            let value = this.value.replace(/\s/g, '').replace(/\D/g, '');
+            let formattedValue = value.replace(/(\d{4})(\d{4})(\d{4})/, '$1 $2 $3');
+            if (value.length <= 12) {
+                this.value = formattedValue;
+            }
+        });
+
+        // OTP verification simulation
+        document.getElementById('otp').addEventListener('input', function() {
+            const otp = this.value.trim();
+            const continueBtn = document.getElementById('verify-continue-btn');
+            
+            if (otp.length === 6) {
+                // Simulate OTP verification
+                setTimeout(() => {
+                    if (otp === '123456') { // Mock OTP
+                        continueBtn.disabled = false;
+                        this.classList.add('border-success');
+                        document.getElementById('otp-error').classList.add('hidden');
+                    } else {
+                        document.getElementById('otp-error').textContent = 'Invalid OTP. Please try again.';
+                        document.getElementById('otp-error').classList.remove('hidden');
+                        this.classList.add('border-error');
+                    }
+                }, 500);
+            } else {
+                continueBtn.disabled = true;
+                this.classList.remove('border-success', 'border-error');
+            }
+        });
+
+        // Mobile number formatting
+        document.getElementById('mobile').addEventListener('input', function() {
+            this.value = this.value.replace(/\D/g, '').slice(0, 10);
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgressIndicator(1);
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>
